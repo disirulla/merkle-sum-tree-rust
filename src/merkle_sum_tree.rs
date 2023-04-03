@@ -1,6 +1,5 @@
 use crate::{Entry, Node, MerkleProof};
-use crate::utils::{parse_csv_to_entries, build_merkle_tree_from_entries};
-use std::path::Path;
+use crate::utils::{parse_csv_to_entries, build_merkle_tree_from_entries, index_of, create_proof, verify_proof};
 
 pub struct MerkleSumTree {
     root: Node,
@@ -47,7 +46,18 @@ impl MerkleSumTree {
     pub fn entries(&self) -> &[Entry] {
         &self.entries
     }
-    
+
+    pub fn index_of(&self, username: &str, balance: u64) -> Option<usize> {
+        index_of(username, balance, &self.nodes)
+    }
+
+    pub fn generate_proof(&self, index: usize) -> Result<MerkleProof, &'static str> {
+        create_proof(index, &self.entries, self.depth, &self.nodes, &self.root)
+    }
+
+    pub fn verify_proof(&self, proof: &MerkleProof) -> bool {
+        verify_proof(proof)
+    }    
 
     // Implement the rest of the methods
 }

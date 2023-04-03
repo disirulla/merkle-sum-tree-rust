@@ -3,7 +3,7 @@ use halo2_proofs::halo2curves::pasta::Fp;
 use crate::{Node, MerkleProof};
 use crate::utils::{big_intify_username, poseidon};
 
-
+#[derive(Default, Clone)]
 pub struct Entry {
     username_to_big_int: u64,
     balance: u64,

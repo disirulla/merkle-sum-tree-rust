@@ -4,3 +4,5 @@
 - [ ] Document it! 
 - [ ] Make it generic for WIDTH, RATE, L
 - [ ] Formatting
+- [ ] Create Middle Node Function??
+- [ ] Make it generic for F
