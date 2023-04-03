@@ -1,0 +1,6 @@
+- [ ] Add merkle Sum Tree
+- [ ] Add BigInt support
+- [ ] Test
+- [ ] Document it! 
+- [ ] Make it generic for WIDTH, RATE, L
+- [ ] Formatting
