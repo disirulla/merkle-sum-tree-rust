@@ -7,6 +7,7 @@ pub fn create_proof(index: usize, entries: &[Entry], depth: usize, nodes: &Vec<V
     }
 
     let mut sibling_hashes = vec![Fp::from(0); depth];
+    let mut sibling_sums = vec![Fp::from(0); depth];
     let mut path_indices = vec![Fp::from(0); depth];
     let mut current_index = index;
 
@@ -20,6 +21,7 @@ pub fn create_proof(index: usize, entries: &[Entry], depth: usize, nodes: &Vec<V
         for i in level_start_index..level_end_index {
             if i != current_index {
                 sibling_hashes[level] = nodes[level][i].hash;
+                sibling_sums[level] = nodes[level][i].balance;
             }
         }
         current_index /= 2;
@@ -29,6 +31,7 @@ pub fn create_proof(index: usize, entries: &[Entry], depth: usize, nodes: &Vec<V
         root_hash: root.hash,
         entry: entries[index].clone(),
         sibling_hashes,
+        sibling_sums,
         path_indices,
     })
 }

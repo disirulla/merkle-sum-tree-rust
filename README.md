@@ -6,3 +6,6 @@
 - [ ] Formatting
 - [ ] Create Middle Node Function??
 - [ ] Make it generic for F
+- [ ] Make hasher generic
+- [ ] Fix poseidon hash for 2 inputs
+- [ ] Test it for entries that is not a power of 2

@@ -1,28 +1,28 @@
 // proof_verification.rs
 
-use crate::{Node, Entry, MerkleProof};
-use crate::utils::poseidon;
-
-fn create_middle_node(child_l: Node, child_r: Node) -> Node {
-    Node {
-        hash: poseidon(child_l.hash, child_r.hash),
-    }
-}
+use crate::{Node, MerkleProof};
+use super::create_middle_node::create_middle_node;
+use halo2_proofs::halo2curves::pasta::Fp;
 
 pub fn verify_proof(proof: &MerkleProof) -> bool {
     let mut node = proof.entry.compute_leaf();
+    let mut balance = Fp::from(proof.entry.balance());
 
     for i in 0..proof.sibling_hashes.len() {
         let sibling_node = Node {
             hash: proof.sibling_hashes[i],
+            balance: proof.sibling_sums[i],
         };
 
         if proof.path_indices[i] == 0.into() {
-            node = create_middle_node(node, sibling_node);
+            node = create_middle_node(&node, &sibling_node);
         } else {
-            node = create_middle_node(sibling_node, node);
+            node = create_middle_node(&sibling_node, &node);
         }
+
+        balance += sibling_node.balance;
+        
     }
 
-    proof.root_hash == node.hash
+    proof.root_hash == node.hash && balance == node.balance
 }
