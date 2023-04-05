@@ -1,4 +1,4 @@
-+Merkle Sum Tree Implementation in Rust
+#Merkle Sum Tree Implementation in Rust
 
 [Documentation WIP]
 
