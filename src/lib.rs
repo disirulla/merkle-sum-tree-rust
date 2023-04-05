@@ -5,11 +5,11 @@ use halo2_proofs::halo2curves::pasta::Fp;
 
 #[derive(Default, Clone)]
 pub struct MerkleProof {
-    root_hash: Fp,
-    entry: Entry,
-    sibling_hashes: Vec<Fp>,
-    sibling_sums: Vec<Fp>,
-    path_indices: Vec<Fp>,
+    pub root_hash: Fp,
+    pub entry: Entry,
+    pub sibling_hashes: Vec<Fp>,
+    pub sibling_sums: Vec<Fp>,
+    pub path_indices: Vec<Fp>,
 }
 
 #[derive(Default, Clone)]
