@@ -14,8 +14,8 @@ pub struct MerkleProof {
 
 #[derive(Default, Clone, Debug)]
 pub struct Node {
-    hash: Fp,
-    balance: Fp,
+    pub hash: Fp,
+    pub balance: Fp,
 }
 
 pub use entry::Entry;
