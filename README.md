@@ -2,6 +2,9 @@
 
 [Documentation WIP]
 
+```cargo build```
+```cargo test -- --nocapture```
+
 ### TO DO:
 
 - [ ] Fix problem on the hasher. Init and hash should be split in order to increase efficiency
