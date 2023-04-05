@@ -1,4 +1,4 @@
-use halo2_proofs::halo2curves::pasta::Fp;
+use halo2_proofs::halo2curves::bn256::{Fr as Fp};
 
 use crate::utils::{big_intify_username, poseidon};
 use crate::Node;

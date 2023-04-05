@@ -1,7 +1,7 @@
 mod entry;
 mod merkle_sum_tree;
 mod utils;
-use halo2_proofs::halo2curves::pasta::Fp;
+use halo2_proofs::halo2curves::bn256::{Fr as Fp};
 
 #[derive(Default, Clone, Debug)]
 pub struct MerkleProof {

@@ -2,7 +2,7 @@
 
 use super::create_middle_node::create_middle_node;
 use crate::{MerkleProof, Node};
-use halo2_proofs::halo2curves::pasta::Fp;
+use halo2_proofs::halo2curves::bn256::{Fr as Fp};
 
 pub fn verify_proof(proof: &MerkleProof) -> bool {
     let mut node = proof.entry.compute_leaf();

@@ -1,6 +1,6 @@
 use super::create_middle_node::create_middle_node;
 use crate::{Entry, Node};
-use halo2_proofs::halo2curves::pasta::Fp;
+use halo2_proofs::halo2curves::bn256::{Fr as Fp};
 
 pub fn build_merkle_tree_from_entries(
     entries: &[Entry],
