@@ -1,5 +1,7 @@
-use crate::{Entry, Node, MerkleProof};
-use crate::utils::{parse_csv_to_entries, build_merkle_tree_from_entries, index_of, create_proof, verify_proof};
+use crate::utils::{
+    build_merkle_tree_from_entries, create_proof, index_of, parse_csv_to_entries, verify_proof,
+};
+use crate::{Entry, MerkleProof, Node};
 
 pub struct MerkleSumTree {
     root: Node,
@@ -15,7 +17,7 @@ impl MerkleSumTree {
         let entries = parse_csv_to_entries(path)?;
         let depth = (entries.len() as f64).log2().ceil() as usize;
 
-        if depth < 1 || depth > Self::MAX_DEPTH {
+        if !(1..=Self::MAX_DEPTH).contains(&depth) {
             return Err("The tree depth must be between 1 and 32".into());
         }
 
@@ -57,7 +59,7 @@ impl MerkleSumTree {
 
     pub fn verify_proof(&self, proof: &MerkleProof) -> bool {
         verify_proof(proof)
-    }    
+    }
 
     // Implement the rest of the methods
 }

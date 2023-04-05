@@ -1,7 +1,7 @@
 use halo2_proofs::halo2curves::pasta::Fp;
 
-use crate::{Node};
 use crate::utils::{big_intify_username, poseidon};
+use crate::Node;
 
 #[derive(Default, Clone)]
 pub struct Entry {
@@ -31,7 +31,12 @@ impl Entry {
 
     pub fn compute_leaf(&self) -> Node {
         Node {
-            hash: poseidon(Fp::from(self.username_to_big_int), Fp::from(self.balance), Fp::from(0), Fp::from(0)),
+            hash: poseidon(
+                Fp::from(self.username_to_big_int),
+                Fp::from(self.balance),
+                Fp::from(0),
+                Fp::from(0),
+            ),
             balance: Fp::from(self.balance),
         }
     }

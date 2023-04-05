@@ -1,5 +1,5 @@
-use crate::Node;
 use super::hash::poseidon;
+use crate::Node;
 
 pub fn create_middle_node(child_l: &Node, child_r: &Node) -> Node {
     Node {

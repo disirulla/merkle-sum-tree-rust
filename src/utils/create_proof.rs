@@ -1,7 +1,13 @@
-use crate::{Entry, Node, MerkleProof};
+use crate::{Entry, MerkleProof, Node};
 use halo2_proofs::halo2curves::pasta::Fp;
 
-pub fn create_proof(index: usize, entries: &[Entry], depth: usize, nodes: &Vec<Vec<Node>>, root: &Node) -> Result<MerkleProof, &'static str> {
+pub fn create_proof(
+    index: usize,
+    entries: &[Entry],
+    depth: usize,
+    nodes: &[Vec<Node>],
+    root: &Node,
+) -> Result<MerkleProof, &'static str> {
     if index >= nodes[0].len() {
         return Err("The leaf does not exist in this tree");
     }

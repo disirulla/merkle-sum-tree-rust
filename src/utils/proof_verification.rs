@@ -1,7 +1,7 @@
 // proof_verification.rs
 
-use crate::{Node, MerkleProof};
 use super::create_middle_node::create_middle_node;
+use crate::{MerkleProof, Node};
 use halo2_proofs::halo2curves::pasta::Fp;
 
 pub fn verify_proof(proof: &MerkleProof) -> bool {
@@ -21,7 +21,6 @@ pub fn verify_proof(proof: &MerkleProof) -> bool {
         }
 
         balance += sibling_node.balance;
-        
     }
 
     proof.root_hash == node.hash && balance == node.balance
