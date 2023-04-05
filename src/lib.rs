@@ -3,7 +3,7 @@ mod merkle_sum_tree;
 mod utils;
 use halo2_proofs::halo2curves::pasta::Fp;
 
-#[derive(Default, Clone)]
+#[derive(Default, Clone, Debug)]
 pub struct MerkleProof {
     pub root_hash: Fp,
     pub entry: Entry,
@@ -12,7 +12,7 @@ pub struct MerkleProof {
     pub path_indices: Vec<Fp>,
 }
 
-#[derive(Default, Clone)]
+#[derive(Default, Clone, Debug)]
 pub struct Node {
     hash: Fp,
     balance: Fp,
